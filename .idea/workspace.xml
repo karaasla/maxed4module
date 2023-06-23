@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="acb9bbfa-3004-4f75-bc1e-cd08300740c3" name="Changes" comment="">
+    <list default="true" id="acb9bbfa-3004-4f75-bc1e-cd08300740c3" name="Changes" comment="palindrome">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +21,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIEW_PUSH_PROTECTED_ONLY" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -98,7 +99,19 @@
       <option name="presentableId" value="Default" />
       <updated>1678118493762</updated>
     </task>
+    <task id="LOCAL-00001" summary="palindrome">
+      <created>1687541662569</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1687541662569</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="palindrome" />
+    <option name="LAST_COMMIT_MESSAGE" value="palindrome" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
