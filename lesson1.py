@@ -19,7 +19,7 @@ superc('addddsffggggfddssas' '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')'''
 
 
 
-def palind(s):
+def palind(s):# буквы из первой и второй половины строки попарно сравниваются
     c = 0
     for i in range(len(s)//2):
         if s[i] == s[-(i+1)]:
