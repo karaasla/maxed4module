@@ -14,7 +14,7 @@ class Dsite(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, verbose_name='пользователь', on_delete=models.CASCADE)
-    image = models.ImageField('изображение', upload_to='dsite/')
+    image = models.ImageField('изображение', upload_to='dsite/', blank=True)
 
     @admin.display(description='дата создания')
     def created_date(self):
