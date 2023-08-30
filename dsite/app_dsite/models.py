@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.utils import timezone
 from django.utils.html import format_html
 from django.contrib.auth import get_user_model
+from django.urls import reverse
 # Create your models here.
 User = get_user_model()
 
@@ -49,6 +50,9 @@ class Dsite(models.Model):
         db_table = "advertisements"
     def __str__(self):
         return f"{self.__class__.__name__}(id={self.id}, title={self.title}, price={self.price})"
+
+    def get_absolute_url(self):
+        return reverse('adv-detail', kwargs={'pk': self.pk})
 
 
 

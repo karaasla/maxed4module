@@ -1,19 +1,29 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Dsite
-from .forms import AdvertisementForm
+from .forms import AdvertisementForm, RegisterForm
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate
+from django.contrib.auth import get_user_model
+from django.db.models import Count
 
+User = get_user_model()
 
-def index(requests):
-    advertisements = Dsite.objects.all()
-    context = {'advertisements': advertisements}
-    return render(requests, 'app_advertisement/index.html', context)
+def index(request):
+    title = request.GET.get('query')
+    if title:
+        advertisements = Dsite.objects.filter(title__icontains=title)
+    else:
+        advertisements = Dsite.objects.all()
+    context = {'advertisements': advertisements, 'title': title}
+    return render(request, 'app_advertisement/index.html', context)
 
 def top_sellers(request):
-    return render(request, 'app_advertisement/top-sellers.html')
-@login_required(login_url=reverse_lazy('profile'))
+    users = User.objects.annotate(adv_count=Count('dsite')).order_by('-adv_count')
+    context = {'users': users}
+    return render(request, 'app_advertisement/top-sellers.html', context)
+@login_required(login_url=reverse_lazy('login'))
 def advertisement_post(request):
     if request.method == 'POST':
         form = AdvertisementForm(request.POST, request.FILES)
@@ -28,13 +38,10 @@ def advertisement_post(request):
     context = {'form': form}
     return render(request, 'app_advertisement/advertisement-post.html', context)
 
-def register(request):
-    return render(request, 'app_auth/register.html')
 
-def login(request):
-    return render(request, 'app_auth/login.html')
-
-def profile(request):
-    return render(request, 'app_auth/profile.html')
+def advertisement_detail(request, pk):
+    advertisement = Dsite.objects.get(id=pk)
+    context = {'advertisement': advertisement}
+    return render(request, 'app_advertisement/advertisement.html', context)
 
 
